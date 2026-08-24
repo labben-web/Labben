@@ -240,4 +240,97 @@
                 <h3>TU CARRITO</h3>
                 <span style="cursor:pointer; font-weight:bold;" onclick="toggleCart()">✕</span>
             </div>
-            <div class="cart-items" id="cart
+            <div class="cart-items" id="cart-items">
+                <p style="color: var(--gray-text); text-align: center; margin-top: 40px;">El carrito está vacío.</p>
+            </div>
+        </div>
+        <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 18px;">
+                <span>Total:</span>
+                <span>$<span id="cart-total">0</span></span>
+            </div>
+            <button class="btn-checkout" onclick="iniciarCheckout()">Iniciar Compra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LABBEN. Todos los derechos reservados. Proyecto Universitario.</p>
+    </footer>
+
+    <script>
+        let carrito = [];
+
+        function changeColor(element, imgId) {
+            let parent = element.parentElement;
+            parent.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            // Cambiar imagen dinámicamente
+            let newImg = element.getAttribute('data-img');
+            document.getElementById(imgId).src = newImg;
+            
+            // Guardar color seleccionado
+            parent.setAttribute('data-selected', element.getAttribute('data-color'));
+        }
+
+        function agregarAlCarrito(nombre, precio, btn) {
+            let swatches = btn.parentElement.querySelector('.swatches');
+            let color = swatches.getAttribute('data-selected');
+
+            carrito.push({ nombre, precio, color });
+            actualizarCarritoUI();
+            toggleCart(true);
+        }
+
+        function actualizarCarritoUI() {
+            document.getElementById('cart-count').innerText = carrito.length;
+            let cartItemsContainer = document.getElementById('cart-items');
+            
+            if (carrito.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="color: var(--gray-text); text-align: center; margin-top: 40px;">El carrito está vacío.</p>';
+                document.getElementById('cart-total').innerText = '0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            carrito.forEach((item) => {
+                total += item.precio;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.nombre}</strong><br>
+                            <small style="color: var(--gray-text);">Tono: ${item.color}</small>
+                        </div>
+                        <div>$${item.precio.toLocaleString()}</div>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            document.getElementById('cart-total').innerText = total.toLocaleString();
+        }
+
+        function toggleCart(forceOpen = false) {
+            let drawer = document.getElementById('cart-drawer');
+            let overlay = document.getElementById('cart-overlay');
+            
+            if (forceOpen || !drawer.classList.contains('open')) {
+                drawer.classList.add('open');
+                overlay.style.display = 'block';
+            } else {
+                drawer.classList.remove('open');
+                overlay.style.display = 'none';
+            }
+        }
+
+        function iniciarCheckout() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío.');
+                return;
+            }
+            alert('¡Gracias por tu compra de prueba en Labben!');
+        }
+    </script>
+</body>
+</html>
