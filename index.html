@@ -41,7 +41,13 @@
         .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
         
         .badge { position: absolute; top: 12px; left: 12px; background: var(--accent); color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
-        .card img { width: 100%; height: 260px; object-fit: cover; transition: opacity 0.3s ease; }
+        .card img { width: 100%; height: 260px; object-fit: cover; transition: filter 0.4s ease; }
+
+        /* Clases de Filtro de Tono manteniendo la estructura del modelo */
+        .tone-gris { filter: grayscale(100%) contrast(105%); }
+        .tone-beige { filter: sepia(40%) hue-rotate(-10deg) saturate(90%); }
+        .tone-azul { filter: hue-rotate(180deg) saturate(140%) contrast(110%); }
+        .tone-verde { filter: hue-rotate(80deg) saturate(120%) contrast(105%); }
 
         .card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
         .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
@@ -61,6 +67,15 @@
 
         .btn-add { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; }
         .btn-add:hover { background: #333333; }
+
+        /* Modal al Agregar */
+        .add-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; justify-content: center; align-items: center; }
+        .add-modal-content { background: white; padding: 30px; border-radius: 8px; max-width: 500px; width: 90%; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .add-modal-close { position: absolute; top: 15px; right: 15px; font-size: 20px; font-weight: bold; cursor: pointer; }
+        .add-modal-img { width: 100%; height: 280px; object-fit: cover; border-radius: 6px; margin: 15px 0; transition: filter 0.3s; }
+        .modal-btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-secondary { background: var(--light-bg); color: var(--text); border: 1px solid var(--border); padding: 12px; width: 100%; font-weight: 700; border-radius: 4px; cursor: pointer; }
+        .btn-primary { background: var(--accent); color: white; border: none; padding: 12px; width: 100%; font-weight: 700; border-radius: 4px; cursor: pointer; }
 
         /* Sección Contacto */
         .contact-section { background: var(--light-bg); border-top: 1px solid var(--border); padding: 50px 20px; margin-top: 50px; }
@@ -110,7 +125,7 @@
             
             <div class="card">
                 <span class="badge">Más Vendido</span>
-                <img id="img-1" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sillón Nordik">
+                <img id="img-1" class="tone-gris" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sillón Nordik">
                 <div class="card-content">
                     <div>
                         <div class="card-title">Sillón Nordik 3 Cuerpos</div>
@@ -119,18 +134,18 @@
                         <div class="cuotas">12 cuotas de $20.833</div>
                         <div class="color-label">Tono de Tela:</div>
                         <div class="swatches" data-selected="Gris">
-                            <div class="swatch selected" data-color="Gris" data-img="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-1')"></div>
-                            <div class="swatch" data-color="Beige" data-img="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-1')"></div>
-                            <div class="swatch" data-color="Azul" data-img="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-1')"></div>
-                            <div class="swatch" data-color="Verde" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-1')"></div>
+                            <div class="swatch selected" data-color="Gris" onclick="changeTone(this, 'img-1')"></div>
+                            <div class="swatch" data-color="Beige" onclick="changeTone(this, 'img-1')"></div>
+                            <div class="swatch" data-color="Azul" onclick="changeTone(this, 'img-1')"></div>
+                            <div class="swatch" data-color="Verde" onclick="changeTone(this, 'img-1')"></div>
                         </div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Nordik 3 Cuerpos', 250000, this)">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Nordik 3 Cuerpos', 250000, this, 'img-1')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <div class="card">
-                <img id="img-2" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Velvet Individual">
+                <img id="img-2" class="tone-beige" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Velvet Individual">
                 <div class="card-content">
                     <div>
                         <div class="card-title">Sillón Velvet Individual</div>
@@ -139,19 +154,19 @@
                         <div class="cuotas">12 cuotas de $10.000</div>
                         <div class="color-label">Tono de Tela:</div>
                         <div class="swatches" data-selected="Beige">
-                            <div class="swatch" data-color="Gris" data-img="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-2')"></div>
-                            <div class="swatch selected" data-color="Beige" data-img="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-2')"></div>
-                            <div class="swatch" data-color="Azul" data-img="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-2')"></div>
-                            <div class="swatch" data-color="Verde" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-2')"></div>
+                            <div class="swatch" data-color="Gris" onclick="changeTone(this, 'img-2')"></div>
+                            <div class="swatch selected" data-color="Beige" onclick="changeTone(this, 'img-2')"></div>
+                            <div class="swatch" data-color="Azul" onclick="changeTone(this, 'img-2')"></div>
+                            <div class="swatch" data-color="Verde" onclick="changeTone(this, 'img-2')"></div>
                         </div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Velvet Individual', 120000, this)">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Velvet Individual', 120000, this, 'img-2')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <div class="card">
                 <span class="badge">Envío Gratis</span>
-                <img id="img-3" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Corner Modern">
+                <img id="img-3" class="tone-gris" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Corner Modern">
                 <div class="card-content">
                     <div>
                         <div class="card-title">Sillón Corner Modern</div>
@@ -160,18 +175,18 @@
                         <div class="cuotas">12 cuotas de $34.166</div>
                         <div class="color-label">Tono de Tela:</div>
                         <div class="swatches" data-selected="Gris">
-                            <div class="swatch selected" data-color="Gris" data-img="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-3')"></div>
-                            <div class="swatch" data-color="Beige" data-img="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-3')"></div>
-                            <div class="swatch" data-color="Azul" data-img="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-3')"></div>
-                            <div class="swatch" data-color="Verde" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-3')"></div>
+                            <div class="swatch selected" data-color="Gris" onclick="changeTone(this, 'img-3')"></div>
+                            <div class="swatch" data-color="Beige" onclick="changeTone(this, 'img-3')"></div>
+                            <div class="swatch" data-color="Azul" onclick="changeTone(this, 'img-3')"></div>
+                            <div class="swatch" data-color="Verde" onclick="changeTone(this, 'img-3')"></div>
                         </div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Corner Modern', 410000, this)">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Corner Modern', 410000, this, 'img-3')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <div class="card">
-                <img id="img-4" src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Chesterfield Classic">
+                <img id="img-4" class="tone-azul" src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Chesterfield Classic">
                 <div class="card-content">
                     <div>
                         <div class="card-title">Chesterfield Classic</div>
@@ -180,19 +195,19 @@
                         <div class="cuotas">12 cuotas de $31.666</div>
                         <div class="color-label">Tono de Tela:</div>
                         <div class="swatches" data-selected="Azul">
-                            <div class="swatch" data-color="Gris" data-img="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-4')"></div>
-                            <div class="swatch" data-color="Beige" data-img="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-4')"></div>
-                            <div class="swatch selected" data-color="Azul" data-img="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-4')"></div>
-                            <div class="swatch" data-color="Verde" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-4')"></div>
+                            <div class="swatch" data-color="Gris" onclick="changeTone(this, 'img-4')"></div>
+                            <div class="swatch" data-color="Beige" onclick="changeTone(this, 'img-4')"></div>
+                            <div class="swatch selected" data-color="Azul" onclick="changeTone(this, 'img-4')"></div>
+                            <div class="swatch" data-color="Verde" onclick="changeTone(this, 'img-4')"></div>
                         </div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Chesterfield Classic', 380000, this)">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Chesterfield Classic', 380000, this, 'img-4')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <div class="card">
                 <span class="badge">Novedad</span>
-                <img id="img-5" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Sillón Relax Recliner">
+                <img id="img-5" class="tone-verde" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Sillón Relax Recliner">
                 <div class="card-content">
                     <div>
                         <div class="card-title">Sillón Relax Recliner</div>
@@ -201,16 +216,31 @@
                         <div class="cuotas">12 cuotas de $16.250</div>
                         <div class="color-label">Tono de Tela:</div>
                         <div class="swatches" data-selected="Verde">
-                            <div class="swatch" data-color="Gris" data-img="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-5')"></div>
-                            <div class="swatch" data-color="Beige" data-img="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-5')"></div>
-                            <div class="swatch" data-color="Azul" data-img="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-5')"></div>
-                            <div class="swatch selected" data-color="Verde" data-img="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" onclick="changeColor(this, 'img-5')"></div>
+                            <div class="swatch" data-color="Gris" onclick="changeTone(this, 'img-5')"></div>
+                            <div class="swatch" data-color="Beige" onclick="changeTone(this, 'img-5')"></div>
+                            <div class="swatch" data-color="Azul" onclick="changeTone(this, 'img-5')"></div>
+                            <div class="swatch selected" data-color="Verde" onclick="changeTone(this, 'img-5')"></div>
                         </div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Relax Recliner', 195000, this)">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Relax Recliner', 195000, this, 'img-5')">Agregar al Carrito</button>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="add-modal-overlay" id="add-modal">
+        <div class="add-modal-content">
+            <span class="add-modal-close" onclick="closeAddModal()">&times;</span>
+            <h3 style="color: #27ae60; font-size: 18px;">✓ ¡Producto Agregado con Éxito!</h3>
+            <img id="modal-img" class="add-modal-img" src="" alt="Vista previa">
+            <h4 id="modal-title" style="font-size: 20px; color: var(--primary);"></h4>
+            <p id="modal-details" style="font-size: 14px; color: var(--gray-text); margin-top: 5px;"></p>
+            
+            <div class="modal-btn-group">
+                <button class="btn-secondary" onclick="closeAddModal()">Seguir Comprando</button>
+                <button class="btn-primary" onclick="closeAddModal(); toggleCart(true);">Ver Carrito</button>
+            </div>
         </div>
     </div>
 
@@ -260,26 +290,42 @@
     <script>
         let carrito = [];
 
-        function changeColor(element, imgId) {
+        function changeTone(element, imgId) {
             let parent = element.parentElement;
             parent.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
             element.classList.add('selected');
             
-            // Cambiar imagen dinámicamente
-            let newImg = element.getAttribute('data-img');
-            document.getElementById(imgId).src = newImg;
-            
-            // Guardar color seleccionado
-            parent.setAttribute('data-selected', element.getAttribute('data-color'));
+            let color = element.getAttribute('data-color');
+            let img = document.getElementById(imgId);
+
+            // Remover tonalidades anteriores y aplicar la nueva manteniendo la foto
+            img.className = '';
+            img.classList.add('tone-' + color.toLowerCase());
+
+            parent.setAttribute('data-selected', color);
         }
 
-        function agregarAlCarrito(nombre, precio, btn) {
+        function agregarAlCarrito(nombre, precio, btn, imgId) {
             let swatches = btn.parentElement.querySelector('.swatches');
             let color = swatches.getAttribute('data-selected');
+            let imgElement = document.getElementById(imgId);
 
             carrito.push({ nombre, precio, color });
             actualizarCarritoUI();
-            toggleCart(true);
+
+            // Cargar datos e imagen con su tonalidad aplicada en el modal
+            let modalImg = document.getElementById('modal-img');
+            modalImg.src = imgElement.src;
+            modalImg.className = 'add-modal-img ' + imgElement.className;
+
+            document.getElementById('modal-title').innerText = nombre;
+            document.getElementById('modal-details').innerText = `Tono: ${color} — $${precio.toLocaleString()}`;
+            
+            document.getElementById('add-modal').style.display = 'flex';
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').style.display = 'none';
         }
 
         function actualizarCarritoUI() {
@@ -334,13 +380,3 @@
     </script>
 </body>
 </html>
-Pasos para actualizarlo:
-Entrá a tu repositorio en GitHub.
-
-Abrí el archivo index.html y hacé clic en el ícono del Lápiz (Editar).
-
-Seleccioná todo el código anterior, borralo y pegá este nuevo código.
-
-Hacé clic abajo de todo en Commit changes...
-
-Esperá 1 o 2 minutos y recargá tu enlace https://labben-sillones.netlify.app/. Verás reflejados todos los cambios automáticamente.
