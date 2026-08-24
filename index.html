@@ -3,316 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labben | Sillones de Diseño y Confort</title>
-
+    <title>Labben | Sillones & Sofás de Diseño</title>
     <style>
         :root {
-            --primary: #1a252f;
-            --accent: #c0392b;
-            --bg: #f4f6f7;
-            --card-bg: #ffffff;
-            --text: #2c3e50;
+            --primary: #111111;
+            --accent: #d9534f;
+            --bg: #ffffff;
+            --light-bg: #f8f9fa;
+            --border: #e2e8f0;
+            --text: #2d3748;
+            --gray-text: #718096;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+
+        /* Barra de Anuncios Top */
+        .top-bar { background: var(--primary); color: white; text-align: center; padding: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; }
+
+        /* Header / Navbar */
+        header { border-bottom: 1px solid var(--border); background: white; sticky: top; position: sticky; top: 0; z-index: 90; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 28px; font-weight: 900; letter-spacing: 4px; color: var(--primary); text-transform: uppercase; cursor: pointer; }
         
-        header { background: #fff; padding: 15px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 26px; font-weight: 800; color: var(--primary); letter-spacing: 3px; }
-        .cart-status { font-weight: 600; background: #eef2f5; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+        nav a { margin: 0 15px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: var(--accent); }
 
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80') center/cover; color: white; text-align: center; padding: 70px 20px; margin-bottom: 40px; }
-        .hero h1 { font-size: 38px; margin-bottom: 10px; }
-        .hero p { font-size: 18px; opacity: 0.9; }
+        .header-actions { display: flex; align-items: center; gap: 20px; }
+        .cart-icon { cursor: pointer; font-size: 14px; font-weight: 700; background: var(--light-bg); padding: 10px 16px; border-radius: 20px; border: 1px solid var(--border); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        /* Banner Principal (Hero) */
+        .hero { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1500&q=80') center/cover; color: white; text-align: center; padding: 100px 20px; margin-bottom: 40px; }
+        .hero h1 { font-size: 46px; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; font-weight: 300; }
+
+        /* Contenedor Principal */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px 20px; }
+        .section-title { text-align: center; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; position: relative; }
+
+        /* Grilla de Productos */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: white; transition: box-shadow 0.3s; display: flex; flex-direction: column; position: relative; }
+        .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
         
-        .card { background: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
-        .card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-        .card-desc { font-size: 14px; color: #666; margin-bottom: 15px; }
-        .card-price { font-size: 20px; font-weight: 800; color: var(--accent); margin-bottom: 15px; }
-        
-        .color-selector { margin-bottom: 15px; }
-        .color-selector label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px; }
-        .color-selector select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; background: #fff; font-size: 14px; }
+        .badge { position: absolute; top: 12px; left: 12px; background: var(--accent); color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+        .card img { width: 100%; height: 260px; object-fit: cover; }
 
-        button { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; width: 100%; transition: background 0.2s; }
-        button:hover { background: #2c3e50; }
-        .btn-checkout-trigger { background: var(--accent); margin: 30px auto 60px auto; max-width: 400px; display: block; padding: 16px; font-size: 18px; text-align: center; }
-        .btn-checkout-trigger:hover { background: #a93226; }
+        .card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .card-desc { font-size: 13px; color: var(--gray-text); margin-bottom: 12px; line-height: 1.4; }
+        .card-price { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .cuotas { font-size: 12px; color: #27ae60; font-weight: 700; margin-bottom: 16px; }
 
-        /* Modal Checkout */
-        .modal { display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
-        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 20px; cursor: pointer; font-weight: bold; }
-        .checkout-step { display: none; }
-        .checkout-step.active { display: block; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .form-group label { display: block; font-size: 14px; margin-bottom: 5px; font-weight: 600; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        /* Selector de Colores (Swatches Visuales) */
+        .color-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--gray-text); margin-bottom: 8px; }
+        .swatches { display: flex; gap: 8px; margin-bottom: 18px; }
+        .swatch { width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s; position: relative; }
+        .swatch.selected { border-color: var(--primary); transform: scale(1.15); }
+        .swatch[data-color="Gris"] { background: #555555; }
+        .swatch[data-color="Beige"] { background: #e0d5c1; }
+        .swatch[data-color="Azul"] { background: #1b2a47; }
+        .swatch[data-color="Verde"] { background: #3b5336; }
 
-        footer { background: var(--primary); color: white; text-align: center; padding: 30px; margin-top: 50px; }
+        /* Botón de Compra */
+        .btn-add { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .btn-add:hover { background: #333333; }
+
+        /* Off-canvas Carrito Lateral */
+        .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100; }
+        .cart-drawer { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; z-index: 101; transition: right 0.3s ease; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
+        .cart-drawer.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid var(--light-bg); padding-bottom: 10px; font-size: 14px; }
+        .btn-checkout { background: var(--accent); color: white; border: none; padding: 15px; width: 100%; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; }
+
+        /* Footer */
+        footer { background: var(--light-bg); border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; color: var(--gray-text); font-size: 13px; }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">🚚 ENVÍOS A TODO EL PAÍS | 💳 12 CUOTAS SIN INTERÉS EN PRODUCTOS SELECCIONADOS</div>
+
     <header>
-        <div class="logo">LABBEN</div>
-        <div class="cart-status" onclick="abrirCheckout()">🛒 Carrito: <span id="cart-count">0</span></div>
+        <div class="header-container">
+            <div class="logo">LABBEN</div>
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#catalogo">Sillones</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon" onclick="toggleCart()">🛒 MI CARRITO (<span id="cart-count">0</span>)</div>
+            </div>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>Colección de Sillones Labben</h1>
-        <p>Personalizá el tono y llevá el máximo confort a tu espacio.</p>
+        <h1>SOFÁS DE DISEÑO Y CONFORT</h1>
+        <p>Especialistas en la fabricación de sillones a medida.</p>
     </section>
 
-    <div class="container">
-        <div class="catalog">
+    <div class="container" id="catalogo">
+        <h2 class="section-title">Nuestros Modelos</h2>
+        
+        <div class="grid">
             
-            <!-- Modelo 1 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Nordik">
-                <div class="card-body">
+                <span class="badge">Más Vendido</span>
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sillón Nordik">
+                <div class="card-content">
                     <div>
-                        <div class="card-title">Nordik 3 Cuerpos</div>
-                        <div class="card-desc">Diseño escandinavo con almohadones de alta densidad.</div>
+                        <div class="card-title">Sillón Nordik 3 Cuerpos</div>
+                        <div class="card-desc">Líneas nórdicas estructuradas con almohadones de vellón siliconado.</div>
                         <div class="card-price">$250.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-1">Seleccionar Tono:</label>
-                            <select id="color-1">
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Azul Noche">Azul Noche</option>
-                                <option value="Verde Olivo">Verde Olivo</option>
-                            </select>
+                        <div class="cuotas">12 cuotas sin interés de $20.833</div>
+                        <div class="color-label">Tono de Tela:</div>
+                        <div class="swatches" data-selected="Gris">
+                            <div class="swatch selected" data-color="Gris" onclick="selectColor(this)"></div>
+                            <div class="swatch" data-color="Beige" onclick="selectColor(this)"></div>
+                            <div class="swatch" data-color="Azul" onclick="selectColor(this)"></div>
+                            <div class="swatch" data-color="Verde" onclick="selectColor(this)"></div>
                         </div>
-                        <button onclick="agregarAlCarrito('Nordik 3 Cuerpos', 250000, 'color-1')">Agregar al Carrito</button>
                     </div>
+                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Nordik 3 Cuerpos', 250000, this)">Agregar al Carrito</button>
                 </div>
             </div>
 
-            <!-- Modelo 2 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Velvet">
-                <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Velvet Individual">
+                <div class="card-content">
                     <div>
-                        <div class="card-title">Velvet Individual</div>
-                        <div class="card-desc">Butaca moderna en pana con patas metálicas doradas.</div>
+                        <div class="card-title">Sillón Velvet Individual</div>
+                        <div class="card-desc">Butaca moderna tapizada en pana antimanchas con base metálica.</div>
                         <div class="card-price">$120.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-2">Seleccionar Tono:</label>
-                            <select id="color-2">
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Azul Noche">Azul Noche</option>
-                                <option value="Verde Olivo">Verde Olivo</option>
-                            </select>
+                        <div class="cuotas">12 cuotas sin interés de $10.000</div>
+                        <div class="color-label">Tono de Tela:</div>
+                        <div class="swatches" data-selected="Beige">
+                            <div class="swatch" data-color="Gris" onclick="selectColor(this)"></div>
+                            <div class="swatch selected" data-color="Beige" onclick="selectColor(this)"></div>
+                            <div class="swatch" data-color="Azul" onclick="selectColor(this)"></div>
+                            <div class="swatch" data-color="Verde" onclick="selectColor(this)"></div>
                         </div>
-                        <button onclick="agregarAlCarrito('Velvet Individual', 120000, 'color-2')">Agregar al Carrito</button>
                     </div>
+                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Velvet Individual', 120000, this)">Agregar al Carrito</button>
                 </div>
             </div>
 
-            <!-- Modelo 3 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Corner Modern">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Corner Modern</div>
-                        <div class="card-desc">Sillón esquinero amplio, ideal para salas de estar integradas.</div>
-                        <div class="card-price">$410.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-3">Seleccionar Tono:</label>
-                            <select id="color-3">
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Azul Noche">Azul Noche</option>
-                                <option value="Verde Olivo">Verde Olivo</option>
-                            </select>
-                        </div>
-                        <button onclick="agregarAlCarrito('Corner Modern', 410000, 'color-3')">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modelo 4 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Chester Classic">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Chester Classic</div>
-                        <div class="card-desc">Estilo clásico capitoné con terminaciones artesanales.</div>
-                        <div class="card-price">$380.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-4">Seleccionar Tono:</label>
-                            <select id="color-4">
-                                <option value="Azul Noche">Azul Noche</option>
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Verde Olivo">Verde Olivo</option>
-                            </select>
-                        </div>
-                        <button onclick="agregarAlCarrito('Chester Classic', 380000, 'color-4')">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modelo 5 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=600&q=80" alt="Loft Minimalist">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Loft Minimalist</div>
-                        <div class="card-desc">Líneas simples y estructura reforzada de perfil bajo.</div>
-                        <div class="card-price">$290.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-5">Seleccionar Tono:</label>
-                            <select id="color-5">
-                                <option value="Verde Olivo">Verde Olivo</option>
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Azul Noche">Azul Noche</option>
-                            </select>
-                        </div>
-                        <button onclick="agregarAlCarrito('Loft Minimalist', 290000, 'color-5')">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modelo 6 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Relax Recliner">
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Relax Recliner</div>
-                        <div class="card-desc">Sillón reclinable individual con apoyapies extensible.</div>
-                        <div class="card-price">$195.000</div>
-                    </div>
-                    <div>
-                        <div class="color-selector">
-                            <label for="color-6">Seleccionar Tono:</label>
-                            <select id="color-6">
-                                <option value="Gris Grafito">Gris Grafito</option>
-                                <option value="Beige Lino">Beige Lino</option>
-                                <option value="Azul Noche">Azul Noche</option>
-                                <option value="Verde Olivo">Verde Olivo</option>
-                            </select>
-                        </div>
-                        <button onclick="agregarAlCarrito('Relax Recliner', 195000, 'color-6')">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <button class="btn-checkout-trigger" onclick="abrirCheckout()">Ver Carrito y Finalizar Compra</button>
-    </div>
-
-    <!-- Modal de Checkout en 2 Pasos -->
-    <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="cerrarCheckout()">&times;</span>
-            
-            <!-- Paso 1: Resumen del Carrito -->
-            <div id="step-1" class="checkout-step active">
-                <h3 style="margin-bottom: 15px;">Resumen de tu Compra</h3>
-                <ul id="cart-items-list" style="list-style: none; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;"></ul>
-                <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">Total: $<span id="cart-total">0</span></p>
-                <button onclick="irAlPaso2()">Continuar a Datos de Envío</button>
-            </div>
-
-            <!-- Paso 2: Formulario de Datos -->
-            <div id="step-2" class="checkout-step">
-                <h3 style="margin-bottom: 15px;">Datos del Comprador</h3>
-                <form id="checkout-form" onsubmit="confirmarPedido(event)">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo:</label>
-                        <input type="text" id="nombre" required placeholder="Ej: María Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="email" id="email" required placeholder="ejemplo@correo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="direccion">Dirección de Entrega:</label>
-                        <input type="text" id="direccion" required placeholder="Ej: Av. Corrientes 1234">
-                    </div>
-                    <button type="submit" style="background: var(--accent);">Confirmar Pedido</button>
-                    <button type="button" onclick="irAlPaso1()" style="background: #7f8c8d; margin-top: 10px;">Volver</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Labben - Muebles y Sillones de Diseño</p>
-    </footer>
-
-    <script>
-        let carrito = [];
-
-        function agregarAlCarrito(nombre, precio, selectId) {
-            let color = document.getElementById(selectId).value;
-            carrito.push({ nombre, precio, color });
-            
-            document.getElementById('cart-count').innerText = carrito.length;
-            alert(`¡${nombre} (Tono: ${color}) se agregó al carrito!`);
-        }
-
-        function abrirCheckout() {
-            if (carrito.length === 0) {
-                alert('El carrito está vacío. Agregá algún sillón primero.');
-                return;
-            }
-
-            let listaHTML = '';
-            let total = 0;
-            carrito.forEach(item => {
-                listaHTML += `<li style="margin-bottom: 8px;"><strong>${item.nombre}</strong> (${item.color}) - $${item.precio.toLocaleString()}</li>`;
-                total += item.precio;
-            });
-
-            document.getElementById('cart-items-list').innerHTML = listaHTML;
-            document.getElementById('cart-total').innerText = total.toLocaleString();
-
-            irAlPaso1();
-            document.getElementById('checkout-modal').style.display = 'flex';
-        }
-
-        function cerrarCheckout() {
-            document.getElementById('checkout-modal').style.display = 'none';
-        }
-
-        function irAlPaso1() {
-            document.getElementById('step-1').classList.add('active');
-            document.getElementById('step-2').classList.remove('active');
-        }
-
-        function irAlPaso2() {
-            document.getElementById('step-1').classList.remove('active');
-            document.getElementById('step-2').classList.add('active');
-        }
-
-        function confirmarPedido(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu compra en Labben! Tu pedido ha sido procesado con éxito.');
-            
-            carrito = [];
-            document.getElementById('cart-count').innerText = 0;
-            cerrarCheckout();
-        }
-    </script>
-</body>
-</html>
+                <span class="badge">Envío Gratis</span>
+                <img src="
