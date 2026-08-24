@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labben | Sillones & Diseño de Interiores</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fcf8f6',
+                            100: '#f7f0eb',
+                            500: '#8c6d58',
+                            600: '#755845',
+                            800: '#4a372b',
+                            900: '#2d211a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <!-- REEMPLAZAR 'G-XXXXXXXXXX' CON TU ID REAL DE GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+        'send_page_view': true
+      });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
+
+    <!-- Barra de anuncios arriba -->
+    <div class="bg-brand-900 text-stone-200 text-xs py-2 text-center font-medium tracking-wide">
+        <span class="inline-block px-2">✨ 12 Cuotas sin interés</span> | 
+        <span class="inline-block px-2">🚚 Envío gratis a todo el país en pedidos mayores a $150.000</span>
+    </div>
+
+    <!-- Navegación -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-3xl font-extrabold tracking-widest text-brand-900 flex items-center gap-2">
+                        LABBEN<span class="text-brand-500 text-4xl leading-none">.</span>
+                    </a>
+                </div>
+
+                <!-- Enlaces Navegación -->
+                <nav class="hidden md:flex space-x-8 font-medium text-sm text-stone-600">
+                    <a href="#inicio" class="hover:text-brand-600 transition-colors">Inicio</a>
+                    <a href="#catalogo" class="hover:text-brand-600 transition-colors">Catálogo de Sillones</a>
+                    <a href="#nosotros" class="hover:text-brand-600 transition-colors">Nosotros</a>
+                    <a href="#contacto" class="hover:text-brand-600 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Acciones (Carrito & Buscar) -->
+                <div class="flex items-center space-x-5">
+                    <button onclick="toggleCart()" class="relative p-2 text-stone-700 hover:text-brand-600 transition-colors focus:outline-none">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-500 text-white text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-white">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative bg-brand-100 overflow-hidden py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-brand-500/10 text-brand-800 rounded-full text-xs font-semibold tracking-wider uppercase">Colección 2026</span>
+                        <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight">
+                            El confort de alta gama en tu sala de estar.
+                        </h1>
+                        <p class="text-stone-600 text-lg">
+                            En **Labben** diseñamos y fabricamos sillones a medida con estructuras de madera maciza y telas de tecnología antimanchas.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="#catalogo" class="inline-flex justify-center items-center px-7 py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-medium rounded-xl shadow-lg shadow-brand-800/20 transition-all text-center">
+                                Explorar Catálogo
+                            </a>
+                            <a href="#contacto" class="inline-flex justify-center items-center px-7 py-3.5 bg-white hover:bg-stone-100 text-stone-800 font-medium rounded-xl border border-stone-300 transition-all text-center">
+                                Asesoría Personalizada
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/6453564598512144462_0" alt="Sillón Labben Living" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propuesta de Valor -->
+        <section class="border-y border-stone-200 bg-white py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Envíos Directos</h4>
+                            <p class="text-xs text-stone-500">A todo el país con embalaje reforzado</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Garantía de 5 Años</h4>
+                            <p class="text-xs text-stone-500">En estructuras y placas de goma espuma</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-couch"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Telas Antimanchas</h4>
+                            <p class="text-xs text-stone-500">Pana, lino y cueros seleccionados</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Hasta 12 Cuotas</h4>
+                            <p class="text-xs text-stone-500">Pagá de forma segura online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catálogo de Productos -->
+        <section id="catalogo" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-stone-900">Nuestro Catálogo de Sillones</h2>
+                    <p class="text-stone-600 mt-2">Modelos pensados para adaptarse a tus espacios con máximo confort.</p>
+                    
+                    <!-- Filtros -->
+                    <div class="flex flex-wrap justify-center gap-2 mt-6">
+                        <button onclick="filterProducts('todos', this)" class="filter-btn active px-4 py-2 text-sm rounded-full bg-brand-800 text-white font-medium transition-all">Todos</button>
+                        <button onclick="filterProducts('esquineros', this)" class="filter-btn px-4 py-2 text-sm rounded-full bg-white text-stone-600 hover:bg-stone-200 border border-stone-200 font-medium transition-all">Esquineros</button>
+                        <button onclick="filterProducts('cuerpos', this)" class="filter-btn px-4 py-2 text-sm rounded-full bg-white text-stone-600 hover:bg-stone-200 border border-stone-200 font-medium transition-all">2 y 3 Cuerpos</button>
+                        <button onclick="filterProducts('poltronas', this)" class="filter-btn px-4 py-2 text-sm rounded-full bg-white text-stone-600 hover:bg-stone-200 border border-stone-200 font-medium transition-all">Poltronas</button>
+                    </div>
+                </div>
+
+                <!-- Grid de Productos -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="product-grid">
+                    
+                    <!-- Producto 1 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all flex flex-col" data-category="cuerpos">
+                        <div class="relative aspect-square overflow-hidden bg-stone-100">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/6453564598512144462_0" alt="Sillón Nordik 3 Cuerpos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] uppercase font-bold px-2.5 py-1 rounded-md">Más vendido</span>
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <span class="text-xs font-semibold text-brand-600 uppercase tracking-wider">3 Cuerpos</span>
+                            <h3 class="font-bold text-stone-900 text-lg mt-1">Sillón Labben Nordik</h3>
+                            <p class="text-stone-500 text-xs mt-1 flex-grow">Lino antimanchas premium con patas de roble macizo.</p>
+                            <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-stone-400 block line-through">$280.000</span>
+                                    <span class="text-xl font-bold text-stone-900">$229.000</span>
+                                </div>
+                                <button onclick="addToCart(1, 'Sillón Labben Nordik', 229000, '3 Cuerpos')" class="px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white text-sm font-medium rounded-xl transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all flex flex-col" data-category="cuerpos">
+                        <div class="relative aspect-square overflow-hidden bg-stone-100">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/13834007853260995184_0" alt="Sillón Leather Exec" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <span class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Cuero Seleccionado</span>
+                            <h3 class="font-bold text-stone-900 text-lg mt-1">Sillón Leather Loft</h3>
+                            <p class="text-stone-500 text-xs mt-1 flex-grow">Cuero vacuno genuino con acabado vintage y diseño industrial.</p>
+                            <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-xl font-bold text-stone-900">$385.000</span>
+                                </div>
+                                <button onclick="addToCart(2, 'Sillón Leather Loft', 385000, 'Cuero')" class="px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white text-sm font-medium rounded-xl transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 3 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all flex flex-col" data-category="esquineros">
+                        <div class="relative aspect-square overflow-hidden bg-stone-100">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/9295501973400621980_0" alt="Esquinero Modular Flow" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[10px] uppercase font-bold px-2.5 py-1 rounded-md">Nuevo</span>
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <span class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Esquinero</span>
+                            <h3 class="font-bold text-stone-900 text-lg mt-1">Esquinero Modular Flow</h3>
+                            <p class="text-stone-500 text-xs mt-1 flex-grow">Módulos reconfigurables con chaise longue intercambiable.</p>
+                            <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-xl font-bold text-stone-900">$450.000</span>
+                                </div>
+                                <button onclick="addToCart(3, 'Esquinero Modular Flow', 450000, 'Esquinero')" class="px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white text-sm font-medium rounded-xl transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 4 -->
+                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all flex flex-col" data-category="poltronas">
+                        <div class="relative aspect-square overflow-hidden bg-stone-100">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/7281719075226329466_0" alt="Poltrona Velvet Cozy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <span class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Individual</span>
+                            <h3 class="font-bold text-stone-900 text-lg mt-1">Poltrona Velvet Cozy</h3>
+                            <p class="text-stone-500 text-xs mt-1 flex-grow">Tapizado en pana italiana super suave con base giratoria.</p>
+                            <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-xl font-bold text-stone-900">$142.000</span>
+                                </div>
+                                <button onclick="addToCart(4, 'Poltrona Velvet Cozy', 142000, 'Poltrona')" class="px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white text-sm font-medium rounded-xl transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nosotros -->
+        <section id="nosotros" class="bg-brand-900 text-white py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-brand-500 font-semibold text-sm uppercase tracking-widest">Nuestra Historia</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mt-2">Fabricación artesanal con tecnología moderna</h2>
+                        <p class="text-stone-300 mt-4 leading-relaxed">
+                            En Labben llevamos más de 15 años creando muebles que combinan durabilidad y diseño contemporáneo. Cada pieza es elaborada a mano por nuestros carpinteros y tapiceros en nuestro taller.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6 mt-8">
+                            <div class="border-l-2 border-brand-500 pl-4">
+                                <span class="text-3xl font-bold text-white block">+5.000</span>
+                                <span class="text-xs text-stone-400">Hogares amoblados</span>
+                            </div>
+                            <div class="border-l-2 border-brand-500 pl-4">
+                                <span class="text-3xl font-bold text-white block">100%</span>
+                                <span class="text-xs text-stone-400">Madera maciza seleccionada</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden border border-brand-800">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/13834007853260995184_0" alt="Taller de Sillones Labben" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto / Cotización -->
+        <section id="contacto" class="py-16 md:py-24 bg-white">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-stone-900">¿Buscás un sillón a medida?</h2>
+                    <p class="text-stone-600 mt-2">Envianos las medidas o consulta que tengas y un diseñador de nuestro equipo te responderá en el día.</p>
+                </div>
+
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6 bg-stone-50 p-8 rounded-2xl border border-stone-200">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 uppercase mb-2">Nombre completo</label>
+                            <input type="text" required id="form-name" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm" placeholder="Ej: Maria Gonzalez">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 uppercase mb-2">Correo electrónico</label>
+                            <input type="email" required id="form-email" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm" placeholder="ejemplo@correo.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 uppercase mb-2">Sillón de interés / Mensaje</label>
+                        <textarea rows="4" required id="form-message" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm" placeholder="Contanos qué modelo te gusta o qué medidas necesitás..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-brand-800 hover:bg-brand-900 text-white font-medium rounded-xl transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-paper-plane"></i> Enviar Consulta
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <span class="text-2xl font-bold text-white tracking-widest block mb-4">LABBEN.</span>
+                    <p class="text-xs text-stone-400 leading-relaxed">Diseño, calidad y comodidad para transformar tus ambientes en lugares únicos.</p>
+                </div>
+                <div>
+                    <h5 class="text-white text-sm font-semibold mb-4">Navegación</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#catalogo" class="hover:text-white transition-colors">Catálogo</a></li>
+                        <li><a href="#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-sm font-semibold mb-4">Contacto</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><i class="fa-solid fa-location-dot mr-2"></i> Av. del Libertador 1450, CABA</li>
+                        <li><i class="fa-solid fa-phone mr-2"></i> +54 11 4567-8900</li>
+                        <li><i class="fa-solid fa-envelope mr-2"></i> ventas@labben.com.ar</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-sm font-semibold mb-4">Redes Sociales</h5>
+                    <div class="flex space-x-4 text-lg">
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-stone-800 text-center text-xs text-stone-500">
+                © 2026 Labben Sillones. Proyecto Universitario con seguimiento de Google Analytics.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slider / Modal de Carrito -->
+    <div id="cart-modal" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-50 hidden transition-opacity">
+        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white p-6 flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+                    <h3 class="text-lg font-bold text-stone-900 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping"></i> Tu Carrito
+                    </h3>
+                    <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-700">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                <div id="cart-items" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p class="text-stone-400 text-center text-sm py-8">Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-200 pt-4">
+                <div class="flex justify-between text-base font-bold text-stone-900 mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total">$0</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-medium rounded-xl transition-colors">
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visor de eventos de Google Analytics en vivo (Ideal para testing de la materia) -->
+    <div class="fixed bottom-4 right-4 z-50 bg-stone-900 text-white p-4 rounded-xl shadow-2xl max-w-xs text-xs font-mono border border-stone-700">
+        <div class="flex items-center justify-between font-sans font-bold border-b border-stone-700 pb-2 mb-2">
+            <span class="flex items-center gap-1.5 text-emerald-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> GA4 Test Monitor
+            </span>
+            <span class="text-[10px] text-stone-400">Eventos</span>
+        </div>
+        <div id="ga-log" class="space-y-1 text-stone-300 max-h-24 overflow-y-auto">
+            <p class="text-stone-500 italic">Haz clic en botones para ver eventos enviados...</p>
+        </div>
+    </div>
+
+    <!-- Lógica de Interactividad y Google Analytics -->
+    <script>
+        let cart = [];
+
+        // Función para mostrar logs de GA4 en vivo en la pantalla
+        function logGAEvent(eventName, params) {
+            console.log(`[Google Analytics Event]: ${eventName}`, params);
+            
+            // Enviar a Google Analytics
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+
+            // Mostrar en el cuadro flotante
+            const logContainer = document.getElementById('ga-log');
+            const item = document.createElement('div');
+            item.className = 'bg-stone-800 p-1.5 rounded text-[11px] border border-stone-700';
+            item.innerHTML = `<strong class="text-amber-400">${eventName}</strong>: ${JSON.stringify(params || {})}`;
+            logContainer.prepend(item);
+        }
+
+        // 1. Filtrar Productos
+        function filterProducts(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 text-sm rounded-full bg-white text-stone-600 hover:bg-stone-200 border border-stone-200 font-medium transition-all';
+            });
+            btnElement.className = 'filter-btn active px-4 py-2 text-sm rounded-full bg-brand-800 text-white font-medium transition-all';
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'todos' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Registrar evento en GA4
+            logGAEvent('filter_products', { category: category });
+        }
+
+        // 2. Control del Carrito
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addToCart(id, name, price, category) {
+            cart.push({ id, name, price, category });
+            updateCartUI();
+
+            // Registrar evento de e-commerce en GA4
+            logGAEvent('add_to_cart', {
+                currency: 'ARS',
+                value: price,
+                items: [{ item_id: id, item_name: name, item_category: category, price: price, quantity: 1 }]
+            });
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            const totalElement = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-stone-400 text-center text-sm py-8">Tu carrito está vacío.</p>';
+                totalElement.innerText = '$0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-800">${item.name}</h4>
+                            <span class="text-xs text-stone-500">$${item.price.toLocaleString('es-AR')}</span>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-rose-500 text-xs hover:underline">Eliminar</button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalElement.innerText = '$' + total.toLocaleString('es-AR');
+        }
+
+        function removeFromCart(index) {
+            const removed = cart.splice(index, 1)[0];
+            updateCartUI();
+            logGAEvent('remove_from_cart', { item_name: removed.name });
+        }
+
+        // 3. Simular Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('El carrito está vacío.');
+                return;
+            }
+
+            const total = cart.reduce((acc, item) => acc + item.price, 0);
+
+            // Evento de GA4 para inicio de compra
+            logGAEvent('begin_checkout', {
+                currency: 'ARS',
+                value: total,
+                items_count: cart.length
+            });
+
+            alert('¡Gracias por probar el flujo de compra! Evento enviado a Google Analytics.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // 4. Formulario de Contacto (Generar Lead)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name').value;
+
+            // Evento GA4
+            logGAEvent('generate_lead', {
+                lead_type: 'Contacto Web',
+                user_name: name
+            });
+
+            alert('¡Consulta enviada exitosamente! Se registró la conversión en Google Analytics.');
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
