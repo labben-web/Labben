@@ -3,183 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labben | Sillones & Sofás de Diseño</title>
+    <title>LABBEN | Sofás & Muebles de Autor</title>
     <style>
         :root {
-            --primary: #111111;
-            --accent: #d9534f;
-            --bg: #ffffff;
-            --light-bg: #f8f9fa;
-            --border: #e2e8f0;
-            --text: #2d3748;
-            --gray-text: #718096;
+            --primary: #121212;
+            --secondary: #1a1a1a;
+            --accent: #8c7355; /* Tono bronce / dorado sobrio */
+            --bg: #faf9f6; /* Blanco cálido / crema premium */
+            --card-bg: #ffffff;
+            --border: #e8e6e1;
+            --text: #222222;
+            --gray-text: #666666;
+            --light-gray: #f3f2ee;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg); color: var(--text); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
 
-        .top-bar { background: var(--primary); color: white; text-align: center; padding: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; }
+        .top-bar { background: var(--primary); color: #d5cfc6; text-align: center; padding: 10px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        header { border-bottom: 1px solid var(--border); background: white; position: sticky; top: 0; z-index: 90; }
-        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
-        .logo { font-size: 28px; font-weight: 900; letter-spacing: 4px; color: var(--primary); text-transform: uppercase; cursor: pointer; text-decoration: none; }
+        header { border-bottom: 1px solid var(--border); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 90; }
+        .header-container { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 22px 30px; }
+        .logo { font-size: 26px; font-weight: 300; letter-spacing: 6px; color: var(--primary); text-transform: uppercase; cursor: pointer; text-decoration: none; }
+        .logo strong { font-weight: 800; }
         
-        nav a { margin: 0 15px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        nav a { margin: 0 20px; text-decoration: none; color: var(--text); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: color 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        .cart-icon { cursor: pointer; font-size: 14px; font-weight: 700; background: var(--light-bg); padding: 10px 16px; border-radius: 20px; border: 1px solid var(--border); }
+        .cart-icon { cursor: pointer; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; background: var(--primary); color: white; padding: 10px 20px; border-radius: 2px; transition: background 0.3s; }
+        .cart-icon:hover { background: var(--accent); }
 
-        .hero { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1500&q=80') center/cover; color: white; text-align: center; padding: 100px 20px; margin-bottom: 40px; }
-        .hero h1 { font-size: 46px; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; }
-        .hero p { font-size: 18px; font-weight: 300; }
+        /* Hero Section Premium */
+        .hero { position: relative; height: 80vh; min-height: 500px; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(18, 18, 18, 0.45), rgba(18, 18, 18, 0.45)), url('https://i.postimg.co/2513f5B4/01-hero.png') center/cover no-repeat; color: white; text-align: center; padding: 0 20px; margin-bottom: 80px; }
+        .hero-content { max-width: 800px; }
+        .hero-subtitle { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #d5cfc6; margin-bottom: 15px; font-weight: 500; }
+        .hero h1 { font-size: 48px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 16px; font-weight: 300; letter-spacing: 1px; color: #e5e5e5; margin-bottom: 30px; }
+        .btn-hero { display: inline-block; background: white; color: var(--primary); padding: 14px 32px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 2px; transition: all 0.3s; }
+        .btn-hero:hover { background: var(--accent); color: white; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px 20px; }
-        .section-title { text-align: center; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 30px 10px 30px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-subtitle { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+        .section-title { font-size: 28px; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; color: var(--primary); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: white; transition: box-shadow 0.3s; display: flex; flex-direction: column; position: relative; }
-        .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .card { border: 1px solid var(--border); border-radius: 0px; overflow: hidden; background: var(--card-bg); transition: transform 0.4s ease, box-shadow 0.4s ease; display: flex; flex-direction: column; position: relative; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px rgba(0,0,0,0.04); }
         
-        .badge { position: absolute; top: 12px; left: 12px; background: var(--accent); color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
-        .card img { width: 100%; height: 260px; object-fit: cover; }
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; font-size: 10px; font-weight: 600; padding: 5px 12px; text-transform: uppercase; letter-spacing: 1.5px; z-index: 2; }
+        .card-img-wrapper { position: relative; width: 100%; height: 320px; overflow: hidden; background: #f8f8f8; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .card:hover img { transform: scale(1.03); }
 
-        .card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .card-desc { font-size: 13px; color: var(--gray-text); margin-bottom: 12px; line-height: 1.4; }
-        .card-price { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .cuotas { font-size: 12px; color: #27ae60; font-weight: 700; margin-bottom: 20px; }
+        .card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; text-align: center; }
+        .card-title { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 8px; letter-spacing: 1px; }
+        .card-desc { font-size: 12px; color: var(--gray-text); margin-bottom: 18px; line-height: 1.6; font-weight: 300; }
+        .card-price { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 4px; letter-spacing: 0.5px; }
+        .cuotas { font-size: 11px; color: var(--accent); font-weight: 500; margin-bottom: 22px; letter-spacing: 0.5px; }
 
-        .btn-add { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; }
-        .btn-add:hover { background: #333333; }
+        .btn-add { background: var(--primary); color: white; border: none; padding: 14px; width: 100%; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: background 0.3s; border-radius: 2px; }
+        .btn-add:hover { background: var(--accent); }
 
-        /* Modal al Agregar */
-        .add-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; justify-content: center; align-items: center; }
-        .add-modal-content { background: white; padding: 30px; border-radius: 8px; max-width: 500px; width: 90%; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .add-modal-close { position: absolute; top: 15px; right: 15px; font-size: 20px; font-weight: bold; cursor: pointer; }
-        .add-modal-img { width: 100%; height: 280px; object-fit: cover; border-radius: 6px; margin: 15px 0; }
-        .modal-btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        .btn-secondary { background: var(--light-bg); color: var(--text); border: 1px solid var(--border); padding: 12px; width: 100%; font-weight: 700; border-radius: 4px; cursor: pointer; }
-        .btn-primary { background: var(--accent); color: white; border: none; padding: 12px; width: 100%; font-weight: 700; border-radius: 4px; cursor: pointer; }
+        /* Modal Al Agregar */
+        .add-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 200; justify-content: center; align-items: center; }
+        .add-modal-content { background: white; padding: 40px; border-radius: 0px; max-width: 480px; width: 90%; text-align: center; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .add-modal-close { position: absolute; top: 20px; right: 20px; font-size: 18px; color: var(--gray-text); cursor: pointer; }
+        .add-modal-img { width: 100%; height: 240px; object-fit: cover; margin: 20px 0; }
+        .modal-btn-group { display: flex; gap: 12px; margin-top: 25px; }
+        .btn-secondary { background: var(--light-gray); color: var(--text); border: none; padding: 14px; width: 100%; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .btn-primary { background: var(--accent); color: white; border: none; padding: 14px; width: 100%; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
 
-        /* Sección Contacto */
-        .contact-section { background: var(--light-bg); border-top: 1px solid var(--border); padding: 50px 20px; margin-top: 50px; }
-        .contact-container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .contact-info h3 { margin-bottom: 15px; font-size: 20px; text-transform: uppercase; }
-        .contact-info p { font-size: 14px; margin-bottom: 10px; color: var(--text); }
-        .contact-info a { color: var(--accent); font-weight: 600; text-decoration: none; }
+        /* Sección Contacto Sobria */
+        .contact-section { background: var(--light-gray); border-top: 1px solid var(--border); padding: 80px 20px; margin-top: 80px; }
+        .contact-container { max-width: 960px; margin: 0 auto; background: white; padding: 50px; border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info h3 { margin-bottom: 20px; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        .contact-info p { font-size: 13px; margin-bottom: 14px; color: var(--gray-text); line-height: 1.6; }
+        .contact-info strong { color: var(--primary); }
+        .contact-info a { color: var(--accent); font-weight: 500; text-decoration: none; }
         .contact-info a:hover { text-decoration: underline; }
         
-        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; }
-        .contact-form button { background: var(--accent); color: white; border: none; padding: 10px; width: 100%; font-weight: bold; border-radius: 4px; cursor: pointer; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 14px; margin-bottom: 14px; border: 1px solid var(--border); background: var(--bg); font-size: 13px; color: var(--text); outline: none; transition: border-color 0.3s; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); }
+        .contact-form button { background: var(--primary); color: white; border: none; padding: 14px; width: 100%; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: background 0.3s; }
+        .contact-form button:hover { background: var(--accent); }
 
-        /* Carrito Lateral */
-        .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100; }
-        .cart-drawer { position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: white; z-index: 101; transition: right 0.3s ease; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
+        /* Carrito Drawer Elegante */
+        .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(3px); z-index: 100; }
+        .cart-drawer { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: white; z-index: 101; transition: right 0.4s ease; padding: 35px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: -10px 0 30px rgba(0,0,0,0.05); }
         .cart-drawer.open { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid var(--light-bg); padding-bottom: 10px; font-size: 14px; }
-        .btn-checkout { background: var(--accent); color: white; border: none; padding: 15px; width: 100%; font-size: 15px; font-weight: 800; text-transform: uppercase; border-radius: 4px; cursor: pointer; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .cart-header h3 { font-size: 14px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+        .cart-items { flex-grow: 1; overflow-y: auto; margin: 25px 0; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid var(--light-gray); padding-bottom: 12px; font-size: 13px; }
+        .btn-checkout { background: var(--primary); color: white; border: none; padding: 16px; width: 100%; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: background 0.3s; }
+        .btn-checkout:hover { background: var(--accent); }
 
-        footer { background: var(--primary); color: white; padding: 30px 20px; text-align: center; font-size: 13px; }
+        footer { background: var(--primary); color: #888888; padding: 40px 20px; text-align: center; font-size: 11px; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
+            .hero h1 { font-size: 32px; }
+            .cart-drawer { width: 100%; right: -100%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">🚚 ENVÍOS A TODO EL PAÍS | 💳 12 CUOTAS SIN INTERÉS</div>
+    <div class="top-bar">Envíos a todo el país | Hasta 12 cuotas sin interés</div>
 
     <header>
         <div class="header-container">
-            <a href="#" class="logo">LABBEN</a>
+            <a href="#" class="logo">LAB<strong>BEN</strong></a>
             <nav>
                 <a href="#">Inicio</a>
-                <a href="#catalogo">Sillones</a>
+                <a href="#catalogo">Colección</a>
                 <a href="#contacto">Contacto</a>
             </nav>
-            <div class="cart-icon" onclick="toggleCart()">🛒 CARRITO (<span id="cart-count">0</span>)</div>
+            <div class="cart-icon" onclick="toggleCart()">Carrito (<span id="cart-count">0</span>)</div>
         </div>
     </header>
 
     <section class="hero">
-        <h1>SOFÁS DE DISEÑO Y CONFORT</h1>
-        <p>Especialistas en la fabricación de sillones a medida.</p>
+        <div class="hero-content">
+            <div class="hero-subtitle">Alta Tapicería & Diseño A Medida</div>
+            <h1>Elegancia & Confort</h1>
+            <p>Piezas exclusivas fabricadas artesanalmente para transformar tus espacios.</p>
+            <a href="#catalogo" class="btn-hero">Descubrir Colección</a>
+        </div>
     </section>
 
     <div class="container" id="catalogo">
-        <h2 class="section-title">Nuestros 5 Modelos</h2>
+        <div class="section-header">
+            <div class="section-subtitle">Catálogo Exclusivo</div>
+            <h2 class="section-title">Nuestros Modelos</h2>
+        </div>
         
         <div class="grid">
             
-            <!-- Modelo 1 -->
+            <!-- Modelo 1 (Imagen de Portada en el Hero) -->
             <div class="card">
-                <span class="badge">Más Vendido</span>
-                <img id="img-1" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sillón Nordik">
+                <span class="badge">Insignia</span>
+                <div class="card-img-wrapper">
+                    <img id="img-1" src="https://i.postimg.co/2513f5B4/01-hero.png" alt="Sillón Modular Royale Chesterfield">
+                </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Sillón Nordik 3 Cuerpos</div>
-                        <div class="card-desc">Líneas nórdicas estructuradas con almohadones de vellón siliconado.</div>
-                        <div class="card-price">$250.000</div>
-                        <div class="cuotas">12 cuotas de $20.833</div>
+                        <div class="card-title">Royale Chesterfield Modular</div>
+                        <div class="card-desc">Diseño esquinero de gran formato con acabado capitoné artesanal y tapizado antracita.</div>
+                        <div class="card-price">$480.000</div>
+                        <div class="cuotas">12 cuotas fijas de $40.000</div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Nordik 3 Cuerpos', 250000, 'img-1')">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Royale Chesterfield Modular', 480000, 'img-1')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <!-- Modelo 2 -->
             <div class="card">
-                <img id="img-2" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Velvet Individual">
+                <div class="card-img-wrapper">
+                    <img id="img-2" src="https://i.postimg.co/y8hCfx4L/02.jpg" alt="Sillón Recliner Studio Individual">
+                </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Sillón Velvet Individual</div>
-                        <div class="card-desc">Butaca moderna tapizada en pana antimanchas con base metálica.</div>
-                        <div class="card-price">$120.000</div>
-                        <div class="cuotas">12 cuotas de $10.000</div>
+                        <div class="card-title">Studio Recliner Individual</div>
+                        <div class="card-desc">Butaca reclinable de alta densidad con posavasos integrado y tapizado en microfibra greige.</div>
+                        <div class="card-price">$195.000</div>
+                        <div class="cuotas">12 cuotas fijas de $16.250</div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Sillón Velvet Individual', 120000, 'img-2')">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Studio Recliner Individual', 195000, 'img-2')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <!-- Modelo 3 -->
             <div class="card">
-                <span class="badge">Envío Gratis</span>
-                <img id="img-3" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Corner Modern">
+                <span class="badge">Novedad</span>
+                <div class="card-img-wrapper">
+                    <img id="img-3" src="https://i.postimg.co/tCg3C4Zg/03.png" alt="Sillón Cinema Double Executive">
+                </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Sillón Corner Modern</div>
-                        <div class="card-desc">Diseño modular esquinero amplio, ideal para salas integradas.</div>
-                        <div class="card-price">$410.000</div>
-                        <div class="cuotas">12 cuotas de $34.166</div>
+                        <div class="card-title">Cinema Double Executive</div>
+                        <div class="card-desc">Sofá de dos plazas con módulos relax independientes y consola central de confort.</div>
+                        <div class="card-price">$390.000</div>
+                        <div class="cuotas">12 cuotas fijas de $32.500</div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Corner Modern', 410000, 'img-3')">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Cinema Double Executive', 390000, 'img-3')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <!-- Modelo 4 -->
             <div class="card">
-                <img id="img-4" src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Chesterfield Classic">
+                <div class="card-img-wrapper">
+                    <img id="img-4" src="https://i.postimg.co/YqB40d6y/04.jpg" alt="Sillón Corner Minimal Beige">
+                </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Chesterfield Classic</div>
-                        <div class="card-desc">Modelo emblemático capitoné con detalles artesanales.</div>
-                        <div class="card-price">$380.000</div>
-                        <div class="cuotas">12 cuotas de $31.666</div>
+                        <div class="card-title">Corner Minimal Beige</div>
+                        <div class="card-desc">Estructura modular con chaise longue, diseñado en lino sintético de tono neutro sobrio.</div>
+                        <div class="card-price">$420.000</div>
+                        <div class="cuotas">12 cuotas fijas de $35.000</div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Chesterfield Classic', 380000, 'img-4')">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Corner Minimal Beige', 420000, 'img-4')">Agregar al Carrito</button>
                 </div>
             </div>
 
             <!-- Modelo 5 -->
             <div class="card">
-                <span class="badge">Novedad</span>
-                <img id="img-5" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Sillón Relax Recliner">
+                <span class="badge">Tendencia</span>
+                <div class="card-img-wrapper">
+                    <img id="img-5" src="https://i.postimg.co/jjhfD561/05.jpg" alt="Sillón Lounge Living Concept">
+                </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Sillón Relax Recliner</div>
-                        <div class="card-desc">Sillón individual con mecanismo reclinable extensible.</div>
-                        <div class="card-price">$195.000</div>
-                        <div class="cuotas">12 cuotas de $16.250</div>
+                        <div class="card-title">Lounge Living Concept</div>
+                        <div class="card-desc">Diseño contemporáneo de asientos profundos, ideal para espacios integrados modernos.</div>
+                        <div class="card-price">$360.000</div>
+                        <div class="cuotas">12 cuotas fijas de $30.000</div>
                     </div>
-                    <button class="btn-add" onclick="agregarAlCarrito('Relax Recliner', 195000, 'img-5')">Agregar al Carrito</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('Lounge Living Concept', 360000, 'img-5')">Agregar al Carrito</button>
                 </div>
             </div>
 
@@ -190,13 +231,13 @@
     <div class="add-modal-overlay" id="add-modal">
         <div class="add-modal-content">
             <span class="add-modal-close" onclick="closeAddModal()">&times;</span>
-            <h3 style="color: #27ae60; font-size: 18px;">✓ ¡Producto Agregado con Éxito!</h3>
+            <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">Producto Seleccionado</div>
+            <h4 id="modal-title" style="font-size: 20px; font-weight: 400; color: var(--primary);"></h4>
             <img id="modal-img" class="add-modal-img" src="" alt="Vista previa">
-            <h4 id="modal-title" style="font-size: 20px; color: var(--primary);"></h4>
-            <p id="modal-details" style="font-size: 14px; color: var(--gray-text); margin-top: 5px;"></p>
+            <p id="modal-details" style="font-size: 16px; font-weight: 700; color: var(--primary);"></p>
             
             <div class="modal-btn-group">
-                <button class="btn-secondary" onclick="closeAddModal()">Seguir Comprando</button>
+                <button class="btn-secondary" onclick="closeAddModal()">Seguir Mirando</button>
                 <button class="btn-primary" onclick="closeAddModal(); toggleCart(true);">Ver Carrito</button>
             </div>
         </div>
@@ -204,21 +245,20 @@
 
     <!-- Sección de Contacto -->
     <section class="contact-section" id="contacto">
-        <h2 class="section-title">Contacto</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Atención al Cliente</h3>
-                <p>📍 <strong>Showroom:</strong> Av. Cabildo 2450, CABA</p>
-                <p>📞 <strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/541145678900" target="_blank">+54 11 4567-8900</a></p>
-                <p>✉️ <strong>Email:</strong> <a href="mailto:contacto@labben.com?subject=Consulta%20desde%20la%20web%20Labben">contacto@labben.com</a></p>
-                <p>🕒 <strong>Horarios:</strong> Lun a Sáb de 10:00 a 19:00 hs</p>
+                <h3>Atención Personalizada</h3>
+                <p>📍 <strong>Showroom Central:</strong> Av. Cabildo 2450, CABA</p>
+                <p>📞 <strong>Atención Directa:</strong> <a href="https://wa.me/541145678900" target="_blank">+54 11 4567-8900</a></p>
+                <p>✉️ <strong>Consultas & Proyectos:</strong> <a href="mailto:contacto@labben.com?subject=Consulta%20desde%20la%20web%20Labben">contacto@labben.com</a></p>
+                <p>🕒 <strong>Horarios:</strong> Lunes a Sábados de 10:00 a 19:00 hs</p>
             </div>
             
             <form class="contact-form" onsubmit="enviarMailFormulario(event)">
-                <input type="text" id="form-nombre" placeholder="Tu Nombre" required>
-                <input type="email" id="form-email" placeholder="Tu Email" required>
-                <textarea id="form-mensaje" rows="4" placeholder="Consulta o duda sobre algún modelo..." required></textarea>
-                <button type="submit">Enviar Mensaje</button>
+                <input type="text" id="form-nombre" placeholder="Nombre Completo" required>
+                <input type="email" id="form-email" placeholder="Correo Electrónico" required>
+                <textarea id="form-mensaje" rows="4" placeholder="Cuéntanos sobre tu espacio o el modelo de tu interés..." required></textarea>
+                <button type="submit">Enviar Consulta</button>
             </form>
         </div>
     </section>
@@ -228,24 +268,24 @@
     <div class="cart-drawer" id="cart-drawer">
         <div>
             <div class="cart-header">
-                <h3>TU CARRITO</h3>
-                <span style="cursor:pointer; font-weight:bold;" onclick="toggleCart()">✕</span>
+                <h3>Resumen de Pedido</h3>
+                <span style="cursor:pointer; font-size: 16px;" onclick="toggleCart()">✕</span>
             </div>
             <div class="cart-items" id="cart-items">
-                <p style="color: var(--gray-text); text-align: center; margin-top: 40px;">El carrito está vacío.</p>
+                <p style="color: var(--gray-text); text-align: center; margin-top: 40px; font-size: 13px;">Su carrito se encuentra vacío.</p>
             </div>
         </div>
         <div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 18px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: 400; font-size: 16px; border-top: 1px solid var(--border); padding-top: 15px;">
                 <span>Total:</span>
-                <span>$<span id="cart-total">0</span></span>
+                <span style="font-weight: 700;">$<span id="cart-total">0</span></span>
             </div>
             <button class="btn-checkout" onclick="iniciarCheckout()">Iniciar Compra</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 LABBEN. Todos los derechos reservados. Proyecto Universitario.</p>
+        <p>&copy; 2026 LABBEN. Todos los derechos reservados. Muebles de Autor & Diseño a Medida.</p>
     </footer>
 
     <script>
@@ -275,7 +315,7 @@
             let cartItemsContainer = document.getElementById('cart-items');
             
             if (carrito.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="color: var(--gray-text); text-align: center; margin-top: 40px;">El carrito está vacío.</p>';
+                cartItemsContainer.innerHTML = '<p style="color: var(--gray-text); text-align: center; margin-top: 40px; font-size: 13px;">Su carrito se encuentra vacío.</p>';
                 document.getElementById('cart-total').innerText = '0';
                 return;
             }
@@ -313,10 +353,10 @@
 
         function iniciarCheckout() {
             if (carrito.length === 0) {
-                alert('Tu carrito está vacío.');
+                alert('Su carrito está vacío.');
                 return;
             }
-            alert('¡Gracias por tu compra de prueba en Labben!');
+            alert('¡Gracias por realizar esta solicitud de prueba en Labben!');
         }
 
         function enviarMailFormulario(event) {
