@@ -307,22 +307,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>&copy; 2026 LABBEN. Todos los derechos reservados. Muebles de Autor & Diseño a Medida.</p>
     </footer>
 
-    <script>
+   <script>
         let carrito = [];
 
         function agregarAlCarrito(nombre, precio, imgId) {
             let imgElement = document.getElementById(imgId);
+            
+            // Buscar si el producto ya existe en el carrito
+            let itemExistente = carrito.find(item => item.nombre === nombre);
+            if (itemExistente) {
+                itemExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
 
-            carrito.push({ nombre, precio });
             actualizarCarritoUI();
 
             let modalImg = document.getElementById('modal-img');
-            modalImg.src = imgElement.src;
+            if (imgElement) modalImg.src = imgElement.src;
 
             document.getElementById('modal-title').innerText = nombre;
-            document.getElementById('modal-details').innerText = `$${precio.toLocaleString()}`;
+            document.getElementById('modal-details').innerText = `$${precio.toLocaleString('es-AR')}`;
             
             document.getElementById('add-modal').style.display = 'flex';
+        }
+
+        function cambiarCantidad(index, cambio) {
+            carrito[index].cantidad += cambio;
+            if (carrito[index].cantidad <= 0) {
+                carrito.splice(index, 1);
+            }
+            actualizarCarritoUI();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarritoUI();
         }
 
         function closeAddModal() {
@@ -330,7 +350,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         function actualizarCarritoUI() {
-            document.getElementById('cart-count').innerText = carrito.length;
+            // Sumar la cantidad total de productos
+            let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+            
             let cartItemsContainer = document.getElementById('cart-items');
             
             if (carrito.length === 0) {
@@ -341,20 +364,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             let html = '';
             let total = 0;
-            carrito.forEach((item) => {
-                total += item.precio;
+            
+            carrito.forEach((item, index) => {
+                let subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                
                 html += `
-                    <div class="cart-item">
-                        <div>
+                    <div class="cart-item" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; border-bottom: 1px solid var(--light-gray); padding-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
                             <strong>${item.nombre}</strong>
+                            <span style="cursor: pointer; color: #cc0000; font-weight: bold; padding: 0 4px;" onclick="eliminarDelCarrito(${index})" title="Eliminar producto">✕</span>
                         </div>
-                        <div>$${item.precio.toLocaleString()}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+                            <div style="display: flex; align-items: center; border: 1px solid var(--border); border-radius: 2px;">
+                                <button onclick="cambiarCantidad(${index}, -1)" style="border: none; background: #eee; width: 26px; height: 26px; cursor: pointer; font-weight: bold;">-</button>
+                                <span style="padding: 0 10px; font-size: 12px; font-weight: 600;">${item.cantidad}</span>
+                                <button onclick="cambiarCantidad(${index}, 1)" style="border: none; background: #eee; width: 26px; height: 26px; cursor: pointer; font-weight: bold;">+</button>
+                            </div>
+                            <div style="font-size: 13px; font-weight: 700;">$${subtotal.toLocaleString('es-AR')}</div>
+                        </div>
                     </div>
                 `;
             });
 
             cartItemsContainer.innerHTML = html;
-            document.getElementById('cart-total').innerText = total.toLocaleString();
+            document.getElementById('cart-total').innerText = total.toLocaleString('es-AR');
         }
 
         function toggleCart(forceOpen = false) {
